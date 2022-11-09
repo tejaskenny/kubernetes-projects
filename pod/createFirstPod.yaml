@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-manual-v2
+  labels:
+    creation_method: manual
+    env: pod
+spec:
+  containers:
+  - image: luksa/kubia
+    name: pod-first
+    ports:
+    - containerPort: 8080
+      protocol: TCP

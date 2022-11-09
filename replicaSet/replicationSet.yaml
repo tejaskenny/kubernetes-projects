@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: first-replicaset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: prod
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - web
+          - ui
+
+  template:
+    metadata:
+      name: pod-replicaset
+      labels:
+        env: prod
+        app: web
+    spec:
+      containers:
+      - name: cont-replicaset
+        image: luksa/kubia
